@@ -48,3 +48,346 @@
   font-weight: bold;
   margin: 0;
 }
+.projects-section {
+  margin-top: 40px;
+}
+
+.projects-section h2 {
+  margin-bottom: 20px;
+}
+
+.project {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.project h3 {
+  margin-bottom: 8px;
+}
+
+.project p {
+  margin: 5px 0;
+}
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.in-progress {
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+
+.completed {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #e5e7eb;
+  border-radius: 10px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: #3b82f6;
+  border-radius: 10px;
+}
+.kanban-section {
+  margin-top: 40px;
+}
+
+.kanban-section h2 {
+  margin-bottom: 20px;
+}
+
+.kanban-board {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.kanban-column {
+  flex: 1;
+  background-color: #e2e8f0;
+  padding: 20px;
+  border-radius: 12px;
+  min-height: 250px;
+}
+
+.kanban-column h3 {
+  margin-bottom: 15px;
+}
+
+.task {
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.task h4 {
+  margin-bottom: 8px;
+}
+
+.task p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+.team-section {
+  margin-top: 40px;
+}
+
+.team-section h2 {
+  margin-bottom: 20px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.team-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.team-card h3 {
+  margin-bottom: 8px;
+}
+
+.team-card p {
+  color: #64748b;
+  margin-bottom: 15px;
+}
+
+.team-card span {
+  display: inline-block;
+  background-color: #dcfce7;
+  color: #16a34a;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 13px;
+  font-weight: bold;
+}
+.analytics-section {
+  margin-top: 40px;
+}
+
+.analytics-section h2 {
+  margin-bottom: 20px;
+}
+
+.analytics-cards {
+  display: flex;
+  gap: 20px;
+}
+
+.analytics-card {
+  background-color: white;
+  padding: 25px;
+  flex: 1;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.analytics-card h3 {
+  margin-bottom: 12px;
+}
+
+.analytics-card p {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+}
+.chart-section {
+  margin-top: 40px;
+}
+
+.chart-section h2 {
+  margin-bottom: 20px;
+}
+
+.chart {
+  height: 300px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  gap: 25px;
+}
+
+.bar {
+  width: 60px;
+  background-color: #3b82f6;
+  border-radius: 8px 8px 0 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.bar span {
+  position: relative;
+  top: 25px;
+  color: #334155;
+  font-weight: bold;
+}
+.notification-section {
+  margin-top: 40px;
+}
+
+.notification-section h2 {
+  margin-bottom: 20px;
+}
+
+.notification {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  border-left: 5px solid #3b82f6;
+}
+
+.notification h3 {
+  margin-bottom: 8px;
+}
+
+.notification p {
+  margin-bottom: 8px;
+  color: #475569;
+}
+
+.notification span {
+  font-size: 13px;
+  color: #64748b;
+}
+.dark-mode {
+  background-color: #0f172a;
+  color: white;
+}
+
+.dark-mode .main-content {
+  background-color: #0f172a;
+}
+
+.dark-mode .card,
+.dark-mode .project,
+.dark-mode .kanban-column,
+.dark-mode .task,
+.dark-mode .team-card,
+.dark-mode .analytics-card,
+.dark-mode .chart,
+.dark-mode .notification {
+  background-color: #1e293b;
+  color: white;
+}
+
+.dark-mode .project p,
+.dark-mode .task p,
+.dark-mode .team-card p,
+.dark-mode .analytics-card p,
+.dark-mode .notification p,
+.dark-mode .notification span {
+  color: #cbd5e1;
+}
+
+.theme-button {
+  padding: 10px 16px;
+  margin: 15px 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #334155;
+  color: white;
+  font-weight: bold;
+}
+.sidebar nav button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+  color: white;
+  text-align: left;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.sidebar nav button:hover {
+  background-color: #334155;
+}
+@media (max-width: 900px) {
+  .dashboard {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: auto;
+  }
+
+  .cards {
+    flex-wrap: wrap;
+  }
+
+  .card {
+    min-width: 200px;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .kanban-board {
+    flex-direction: column;
+  }
+
+  .kanban-column {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-content {
+    padding: 20px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .analytics-cards {
+    flex-direction: column;
+  }
+
+  .chart {
+    overflow-x: auto;
+  }
+}
