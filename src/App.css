@@ -8,6 +8,11 @@
   padding: 25px;
   background-color: #1e293b;
   color: white;
+
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  box-sizing: border-box;
 }
 
 .sidebar h2 {
@@ -70,6 +75,7 @@
 
 .project p {
   margin: 5px 0;
+  color: #64748b;
 }
 .project-header {
   display: flex;
@@ -128,6 +134,7 @@
   padding: 20px;
   border-radius: 12px;
   min-height: 250px;
+  gap: 10px;
 }
 
 .kanban-column h3 {
@@ -339,10 +346,13 @@
   text-align: left;
   font-size: 15px;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .sidebar nav button:hover {
   background-color: #334155;
+  padding-left: 18px;
+  color: #60a5fa;
 }
 @media (max-width: 900px) {
   .dashboard {
@@ -446,4 +456,200 @@
 
 .dark-mode .status-card p {
   color: #cbd5e1;
+}
+.dark-mode .sidebar {
+  background-color: #0f172a;
+  color: white;
+}
+.dark-mode .sidebar h2 {
+  color: #60a5fa;
+}
+.dark-mode .main-content h1 {
+  color: #f8fafc;
+}
+.card {
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+.project {
+  transition: 0.2s;
+}
+
+.project:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+.team-card {
+  transition: 0.2s;
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+.task {
+  transition: 0.2s;
+}
+
+.task:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+.analytics-card {
+  transition: 0.2s;
+}
+
+.analytics-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+.status-card {
+  transition: 0.2s;
+}
+
+.status-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+.notification {
+  transition: 0.2s;
+}
+
+.notification:hover {
+  transform: translateX(5px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+.sidebar h2 {
+  color: white;
+}
+
+.dark-mode .sidebar h2 {
+  color: #60a5fa;
+}
+
+.dark-mode .bar span {
+  color: #cbd5e1;
+}
+.theme-button {
+  transition: 0.2s;
+}
+
+.theme-button:hover {
+  transform: scale(1.05);
+}
+.progress {
+  transition: width 0.8s ease;
+}
+.status-card:nth-child(1) {
+  border-top: 4px solid #22c55e;
+}
+
+.status-card:nth-child(2) {
+  border-top: 4px solid #3b82f6;
+}
+
+.status-card:nth-child(3) {
+  border-top: 4px solid #f59e0b;
+}
+.dark-mode .project p {
+  color: #cbd5e1;
+}
+.analytics-card p {
+  color: #2563eb;
+  font-size: 32px;
+}
+.dark-mode .analytics-card p {
+  color: #60a5fa;
+}
+.bar {
+  transition: 0.2s;
+}
+
+.bar:hover {
+  transform: scaleY(1.05);
+}
+.top-header h2 {
+  color: #1e3a8a;
+  font-size: 28px;
+}
+.dark-mode .top-header h2 {
+  color: #60a5fa;
+}
+.sidebar nav {
+  margin-top: 10px;
+}
+.notification-badge {
+  background-color: #ef4444;
+  color: white;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-size: 11px;
+  margin-left: 5px;
+}
+.notification-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.notification-title h2 {
+  margin: 0;
+}
+
+.notification-count {
+  background-color: #ef4444;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.status {
+  transition: 0.2s;
+}
+
+.status:hover {
+  transform: scale(1.05);
+}
+.kanban-column:nth-child(1) {
+  border-top: 4px solid #f59e0b;
+}
+
+.kanban-column:nth-child(2) {
+  border-top: 4px solid #3b82f6;
+}
+
+.kanban-column:nth-child(3) {
+  border-top: 4px solid #22c55e;
+}
+.kanban-column {
+  transition: 0.2s;
+}
+
+.kanban-column:hover {
+  transform: translateY(-3px);
+}
+.search-bar {
+  width: 280px;
+  padding: 12px 15px;
+  margin-top: 20px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+.search-bar:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+.dark-mode .search-bar {
+  background-color: #1e293b;
+  color: white;
+  border-color: #475569;
 }

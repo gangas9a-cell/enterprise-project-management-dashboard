@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 function App() {
     const [darkMode, setDarkMode] = useState(false);
+    const [search, setSearch] = useState("");
   return (
     <div className={darkMode ? "dashboard dark-mode" : "dashboard"}>
 
@@ -30,8 +31,8 @@ function App() {
   </button>
 
   <button onClick={() => document.getElementById("notifications").scrollIntoView()}>
-    Notifications
-  </button>
+  Notifications <span className="notification-badge">3</span>
+</button>
 </nav>
       </aside>
 
@@ -41,6 +42,14 @@ function App() {
     <h2>Welcome back, Admin!</h2>
     <p>Here's what's happening with your projects today.</p>
   </div>
+
+  <input
+  type="text"
+  className="search-bar"
+  placeholder="Search projects or tasks..."
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
+/>
 </div>
         <h1>Dashboard</h1>
         <button
@@ -75,7 +84,9 @@ function App() {
 <div id="projects" className="projects-section">
   <h2>Recent Projects</h2>
 
+  {("Website Redesign".toLowerCase().includes(search.toLowerCase())) && (
   <div className="project">
+
     <div className="project-header">
       <h3>Website Redesign</h3>
       <span className="status in-progress">In Progress</span>
@@ -87,7 +98,9 @@ function App() {
     </div>
     <p>65% completed</p>
   </div>
+  )}
 
+  {("Mobile App Development".toLowerCase().includes(search.toLowerCase())) && (
   <div className="project">
     <div className="project-header">
       <h3>Mobile App Development</h3>
@@ -100,12 +113,15 @@ function App() {
     </div>
     <p>100% completed</p>
   </div>
+  )}
 
+  {("Marketing Campaign".toLowerCase().includes(search.toLowerCase())) && (
   <div className="project">
     <div className="project-header">
       <h3>Marketing Campaign</h3>
       <span className="status in-progress">In Progress</span>
     </div>
+  
 
     <p>Project progress</p>
     <div className="progress-bar">
@@ -113,6 +129,7 @@ function App() {
     </div>
     <p>40% completed</p>
   </div>
+  )}
 </div>
         <div className="status-section">
           <h2>Project Status Overview</h2>
@@ -260,7 +277,10 @@ function App() {
           </div>
         </div>
           <div id="notifications" className="notification-section">
-          <h2>Notification Center</h2>
+          <div className="notification-title">
+  <h2>Notification Center</h2>
+  <span className="notification-count">3 New</span>
+</div>
 
           <div className="notification">
             <h3>New Task Assigned</h3>
