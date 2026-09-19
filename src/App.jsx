@@ -36,6 +36,12 @@ function App() {
       </aside>
 
       <main id="dashboard" className="main-content">
+        <div className="top-header">
+  <div>
+    <h2>Welcome back, Admin!</h2>
+    <p>Here's what's happening with your projects today.</p>
+  </div>
+</div>
         <h1>Dashboard</h1>
         <button
   className="theme-button"
@@ -108,6 +114,26 @@ function App() {
     <p>40% completed</p>
   </div>
 </div>
+        <div className="status-section">
+          <h2>Project Status Overview</h2>
+
+          <div className="status-cards">
+            <div className="status-card">
+              <h3>Completed</h3>
+              <p>8 Projects</p>
+            </div>
+
+            <div className="status-card">
+              <h3>In Progress</h3>
+              <p>3 Projects</p>
+            </div>
+
+            <div className="status-card">
+              <h3>Pending</h3>
+              <p>1 Project</p>
+            </div>
+          </div>
+        </div>
 <div id="tasks" className="kanban-section">
   <h2>Kanban Board</h2>
 
