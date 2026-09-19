@@ -22,21 +22,47 @@ function App() {
         <p>Welcome to the Enterprise Project Management Dashboard</p>
 
         <div className="cards">
-          <div className="card">
-            <h3>Total Projects</h3>
-            <p>12</p>
-          </div>
+  <div className="card">
+    <h3>Total Projects</h3>
+    <p>12</p>
+  </div>
 
-          <div className="card">
-            <h3>Active Tasks</h3>
-            <p>28</p>
-          </div>
+  <div className="card">
+    <h3>Completed Projects</h3>
+    <p>8</p>
+  </div>
 
-          <div className="card">
-            <h3>Team Members</h3>
-            <p>16</p>
-          </div>
-        </div>
+  <div className="card">
+    <h3>Active Tasks</h3>
+    <p>28</p>
+  </div>
+
+  <div className="card">
+    <h3>Team Members</h3>
+    <p>16</p>
+  </div>
+</div>
+<div className="projects-section">
+  <h2>Recent Projects</h2>
+
+  <div className="project">
+    <h3>Website Redesign</h3>
+    <p>Status: In Progress</p>
+    <p>Progress: 65%</p>
+  </div>
+
+  <div className="project">
+    <h3>Mobile App Development</h3>
+    <p>Status: Completed</p>
+    <p>Progress: 100%</p>
+  </div>
+
+  <div className="project">
+    <h3>Marketing Campaign</h3>
+    <p>Status: In Progress</p>
+    <p>Progress: 40%</p>
+  </div>
+</div>
       </main>
 
     </div>
