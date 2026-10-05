@@ -653,3 +653,60 @@
   color: white;
   border-color: #475569;
 }
+.projects-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.projects-title h2 {
+  margin: 0;
+}
+
+.add-project-button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #3b82f6;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.add-project-button:hover {
+  background-color: #2563eb;
+}
+.pending {
+  background-color: #f59e0b;
+  color: white;
+}
+.add-project-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.add-project-form input,
+.add-project-form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.add-project-form button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.delete-project-button {
+  margin-left: 8px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

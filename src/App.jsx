@@ -3,6 +3,10 @@ import "./App.css";
 function App() {
     const [darkMode, setDarkMode] = useState(false);
     const [search, setSearch] = useState("");
+    const [showForm, setShowForm] = useState(false);
+    const [newProject, setNewProject] = useState("");
+    const [projects, setProjects] = useState([]);
+    const [newProjectStatus, setNewProjectStatus] = useState("In Progress");
   return (
     <div className={darkMode ? "dashboard dark-mode" : "dashboard"}>
 
@@ -82,7 +86,52 @@ function App() {
   </div>
 </div>
 <div id="projects" className="projects-section">
-  <h2>Recent Projects</h2>
+  <div className="projects-title">
+    <h2>Recent Projects</h2>
+    <button
+  className="add-project-button"
+  onClick={() => setShowForm(true)}
+>
+  + Add Project
+</button>
+  </div>
+  {showForm && (
+  <div className="add-project-form">
+   <input
+  type="text"
+  placeholder="Project name"
+  value={newProject}
+  onChange={(e) => setNewProject(e.target.value)}
+/>
+<select
+  value={newProjectStatus}
+  onChange={(e) => setNewProjectStatus(e.target.value)}
+>
+  <option value="In Progress">In Progress</option>
+  <option value="Completed">Completed</option>
+  <option value="Pending">Pending</option>
+</select>
+  <button
+  onClick={() => {
+    if (newProject.trim() !== "") {
+      setProjects([
+        ...projects,
+        {
+          name: newProject,
+          status: newProjectStatus
+        }
+      ]);
+      setNewProject("");
+      setNewProjectStatus("In Progress");
+      setShowForm(false);
+    }
+  }}
+>
+  Add
+</button>
+    <button onClick={() => setShowForm(false)}>Cancel</button>
+  </div>
+)}
 
   {("Website Redesign".toLowerCase().includes(search.toLowerCase())) && (
   <div className="project">
@@ -119,7 +168,7 @@ function App() {
   <div className="project">
     <div className="project-header">
       <h3>Marketing Campaign</h3>
-      <span className="status in-progress">In Progress</span>
+      
     </div>
   
 
@@ -130,6 +179,48 @@ function App() {
     <p>40% completed</p>
   </div>
   )}
+  {projects.filter((project) =>
+  project.name.toLowerCase().includes(search.toLowerCase())
+).map((project, index) => (
+  <div className="project" key={index}>
+    <div className="project-header">
+      <h3>{project.name}</h3>
+<div>
+  <span className="status in-progress">{project.status}</span>
+  <button
+    className="delete-project-button"
+    onClick={() => {
+      setProjects(projects.filter((_, i) => i !== index));
+    }}
+  >
+    Delete
+  </button>
+</div>
+    </div>
+    <p>Project progress</p>
+    <div className="progress-bar">
+  <div
+    className="progress"
+    style={{
+      width:
+        project.status === "Completed"
+          ? "100%"
+          : project.status === "In Progress"
+          ? "50%"
+          : "0%"
+    }}
+  ></div>
+</div>
+
+<p>
+  {project.status === "Completed"
+    ? "100% completed"
+    : project.status === "In Progress"
+    ? "50% completed"
+    : "0% completed"}
+</p>
+  </div>
+))}
 </div>
         <div className="status-section">
           <h2>Project Status Overview</h2>
