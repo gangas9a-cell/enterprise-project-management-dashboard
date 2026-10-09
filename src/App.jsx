@@ -1,12 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 function App() {
     const [darkMode, setDarkMode] = useState(false);
     const [search, setSearch] = useState("");
     const [showForm, setShowForm] = useState(false);
     const [newProject, setNewProject] = useState("");
-    const [projects, setProjects] = useState([]);
+    const [projects, setProjects] = useState(() => {
+  const savedProjects = localStorage.getItem("projects");
+  return savedProjects ? JSON.parse(savedProjects) : [];
+});
+    
+useEffect(() => {
+  localStorage.setItem("projects", JSON.stringify(projects));
+}, [projects]);
+
     const [newProjectStatus, setNewProjectStatus] = useState("In Progress");
+   
+const [tasks, setTasks] = useState(() => {
+  const savedTasks = localStorage.getItem("tasks");
+
+  return savedTasks ? JSON.parse(savedTasks) : [
+    { title: "Design Homepage", assignedTo: "Alex", status: "To Do" },
+    { title: "Prepare Documentation", assignedTo: "Sarah", status: "To Do" },
+    { title: "Develop Login Page", assignedTo: "John", status: "In Progress" },
+    { title: "API Integration", assignedTo: "Emma", status: "In Progress" },
+    { title: "Database Setup", assignedTo: "David", status: "Done" },
+    { title: "Project Planning", assignedTo: "Mia", status: "Done" }
+  ];
+});
+useEffect(() => {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}, [tasks]);
+const [showTaskForm, setShowTaskForm] = useState(false);
   return (
     <div className={darkMode ? "dashboard dark-mode" : "dashboard"}>
 
@@ -168,8 +193,8 @@ function App() {
   <div className="project">
     <div className="project-header">
       <h3>Marketing Campaign</h3>
-      
-    </div>
+     <span className="status in-progress">In Progress</span>
+</div>
   
 
     <p>Project progress</p>
@@ -186,7 +211,17 @@ function App() {
     <div className="project-header">
       <h3>{project.name}</h3>
 <div>
-  <span className="status in-progress">{project.status}</span>
+<span
+  className={`status ${
+    project.status === "Completed"
+      ? "completed"
+      : project.status === "Pending"
+      ? "pending"
+      : "in-progress"
+  }`}
+>
+  {project.status}
+</span>
   <button
     className="delete-project-button"
     onClick={() => {
@@ -242,52 +277,185 @@ function App() {
             </div>
           </div>
         </div>
-<div id="tasks" className="kanban-section">
-  <h2>Kanban Board</h2>
+ <div id="tasks" className="kanban-section">
+  <div className="kanban-title">
+    <h2>Kanban Board</h2>
+    <button
+  className="add-task-button"
+  onClick={() => setShowTaskForm(true)}
+>
+  + Add Task
+</button>
+  </div>
+  {showTaskForm && (
+  <div className="add-task-form">
+    <input
+      type="text"
+      placeholder="Task name"
+      id="taskName"
+    />
+
+    <input
+      type="text"
+      placeholder="Assigned to"
+      id="taskAssignee"
+    />
+
+    <select id="taskStatus">
+      <option value="To Do">To Do</option>
+      <option value="In Progress">In Progress</option>
+      <option value="Done">Done</option>
+    </select>
+
+    <button
+      onClick={() => {
+        const name = document.getElementById("taskName").value;
+        const assignee = document.getElementById("taskAssignee").value;
+        const status = document.getElementById("taskStatus").value;
+
+        if (name.trim() !== "" && assignee.trim() !== "") {
+          setTasks([
+            ...tasks,
+            {
+              title: name,
+              assignedTo: assignee,
+              status: status
+            }
+          ]);
+
+          setShowTaskForm(false);
+        }
+      }}
+    >
+      Add
+    </button>
+
+    <button onClick={() => setShowTaskForm(false)}>
+      Cancel
+    </button>
+  </div>
+)}
 
   <div className="kanban-board">
 
     <div className="kanban-column">
-      <h3>To Do</h3>
+  <h3>To Do</h3>
 
-      <div className="task">
-        <h4>Design Homepage</h4>
-        <p>Assigned to: Alex</p>
-      </div>
+  {tasks
+    .filter((task) => task.status === "To Do")
+    .map((task, index) => (
+      
+<div className="task" key={index}>
+  <h4>{task.title}</h4>
+  <p>Assigned to: {task.assignedTo}</p>
 
-      <div className="task">
-        <h4>Prepare Documentation</h4>
-        <p>Assigned to: Sarah</p>
-      </div>
-    </div>
+  <select
+    value={task.status}
+    onChange={(e) => {
+      setTasks(
+        tasks.map((item) =>
+          item === task
+            ? { ...item, status: e.target.value }
+            : item
+        )
+      );
+    }}
+  >
+    <option value="To Do">To Do</option>
+    <option value="In Progress">In Progress</option>
+    <option value="Done">Done</option>
+  </select>
+
+  <button
+    className="delete-task-button"
+    onClick={() => {
+      setTasks(tasks.filter((item) => item !== task));
+    }}
+  >
+    Delete
+  </button>
+</div>
+    ))}
+</div>
 
     <div className="kanban-column">
-      <h3>In Progress</h3>
+  <h3>In Progress</h3>
 
-      <div className="task">
-        <h4>Develop Login Page</h4>
-        <p>Assigned to: John</p>
-      </div>
+  {tasks
+    .filter((task) => task.status === "In Progress")
+    .map((task, index) => (
+      <div className="task" key={index}>
+  <h4>{task.title}</h4>
+  <p>Assigned to: {task.assignedTo}</p>
+  
+<select
+  value={task.status}
+  onChange={(e) => {
+    setTasks(
+      tasks.map((item) =>
+        item === task
+          ? { ...item, status: e.target.value }
+          : item
+      )
+    );
+  }}
+>
+  <option value="To Do">To Do</option>
+  <option value="In Progress">In Progress</option>
+  <option value="Done">Done</option>
+</select>
 
-      <div className="task">
-        <h4>API Integration</h4>
-        <p>Assigned to: Emma</p>
-      </div>
-    </div>
+<button
+  className="delete-task-button"
+  onClick={() => {
+    setTasks(tasks.filter((item) => item !== task));
+  }}
+>
+  Delete
+</button>
+</div>
+    ))}
+</div>
 
     <div className="kanban-column">
-      <h3>Done</h3>
+  <h3>Done</h3>
 
-      <div className="task">
-        <h4>Database Setup</h4>
-        <p>Assigned to: David</p>
-      </div>
+  {tasks
+    .filter((task) => task.status === "Done")
+    .map((task, index) => (
+    
+<div className="task" key={index}>
+  <h4>{task.title}</h4>
+  <p>Assigned to: {task.assignedTo}</p>
 
-      <div className="task">
-        <h4>Project Planning</h4>
-        <p>Assigned to: Mia</p>
-      </div>
-    </div>
+  <select
+    value={task.status}
+    onChange={(e) => {
+      setTasks(
+        tasks.map((item) =>
+          item === task
+            ? { ...item, status: e.target.value }
+            : item
+        )
+      );
+    }}
+  >
+    <option value="To Do">To Do</option>
+    <option value="In Progress">In Progress</option>
+    <option value="Done">Done</option>
+  </select>
+
+  <button
+    className="delete-task-button"
+    onClick={() => {
+      setTasks(tasks.filter((item) => item !== task));
+    }}
+  >
+    Delete
+  </button>
+</div>
+    ))}
+</div>
 
   </div>
 </div>
